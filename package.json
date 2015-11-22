@@ -1,0 +1,19 @@
+{
+  "name": "fantasybach-sdk",
+  "description": "Javscript SDK for accessing the Fantasy Bach API",
+  "version": "0.0.1",
+  "author": "Mitchell Loeppky <mitchell@loeppky.com>",
+  "homepage": "https://github.com/MixMasterMitch/FantasyBach-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MixMasterMitch/FantasyBach-sdk.git"
+  },
+  "keywords": [],
+  "main": "./index.js",
+  "dependencies": {
+    "axios": "^0.7.0",
+    "crypto-js": "^3.1.5",
+    "moment": "^2.10.6",
+    "uri-template": "^1.0.0"
+  }
+}
