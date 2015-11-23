@@ -12,7 +12,6 @@ module.exports = {
                 secretKey: '',
                 sessionToken: '',
                 region: '',
-                apiKey: undefined,
                 defaultContentType: 'application/json',
                 defaultAcceptType: 'application/json'
             };
@@ -22,9 +21,6 @@ module.exports = {
         }
         if (config.secretKey === undefined) {
             config.secretKey = '';
-        }
-        if (config.apiKey === undefined) {
-            config.apiKey = '';
         }
         if (config.sessionToken === undefined) {
             config.sessionToken = '';
@@ -95,7 +91,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(loginGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(loginGetRequest, authType, additionalParams);
         };
 
 
@@ -113,7 +109,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams);
         };
 
 
@@ -131,7 +127,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams);
         };
 
 
@@ -149,7 +145,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdContestantGetRequest, authType, additionalParams);
         };
 
 
@@ -169,7 +165,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams);
         };
 
 
@@ -187,7 +183,7 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams);
         };
 
 
@@ -205,29 +201,65 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoleGetRequest, authType, additionalParams);
         };
 
 
-        apigClient.seasonSeasonIdRoundGet = function (params, body, additionalParams) {
+        apigClient.getRounds = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 
-            utils.assertParametersDefined(params, ['seasonId', 'ids', 'id'], ['body']);
+            utils.assertParametersDefined(params, ['seasonId'], ['body']);
 
             var seasonSeasonIdRoundGetRequest = {
                 verb: 'get'.toUpperCase(),
-                path: pathComponenent + uritemplate('/season/{seasonId}/round').expand(utils.parseParametersToObject(params, ['seasonId', ])),
+                path: pathComponenent + uritemplate('/season/{seasonId}/round').expand(utils.parseParametersToObject(params, ['seasonId'])),
                 headers: utils.parseParametersToObject(params, []),
-                queryParams: utils.parseParametersToObject(params, ['ids', 'id']),
+                queryParams: utils.parseParametersToObject(params, []),
                 body: body
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoundGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundGetRequest, authType, additionalParams);
         };
 
 
-        apigClient.seasonSeasonIdRoundRoundIdPickPost = function (params, body, additionalParams) {
+        apigClient.getRoundById = function (params, body, additionalParams) {
+            if(additionalParams === undefined) { additionalParams = {}; }
+
+            utils.assertParametersDefined(params, ['seasonId', 'id'], ['body']);
+
+            var seasonSeasonIdRoundGetRequest = {
+                verb: 'get'.toUpperCase(),
+                path: pathComponenent + uritemplate('/season/{seasonId}/round').expand(utils.parseParametersToObject(params, ['seasonId'])),
+                headers: utils.parseParametersToObject(params, []),
+                queryParams: utils.parseParametersToObject(params, ['id']),
+                body: body
+            };
+
+
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundGetRequest, authType, additionalParams);
+        };
+
+
+        apigClient.getRoundsById = function (params, body, additionalParams) {
+            if(additionalParams === undefined) { additionalParams = {}; }
+
+            utils.assertParametersDefined(params, ['seasonId', 'ids'], ['body']);
+
+            var seasonSeasonIdRoundGetRequest = {
+                verb: 'get'.toUpperCase(),
+                path: pathComponenent + uritemplate('/season/{seasonId}/round').expand(utils.parseParametersToObject(params, ['seasonId'])),
+                headers: utils.parseParametersToObject(params, []),
+                queryParams: utils.parseParametersToObject(params, ['ids']),
+                body: body
+            };
+
+
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundGetRequest, authType, additionalParams);
+        };
+
+
+        apigClient.postPick = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 
             utils.assertParametersDefined(params, ['seasonId', 'roundId'], ['body']);
@@ -241,11 +273,11 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoundRoundIdPickPostRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundRoundIdPickPostRequest, authType, additionalParams);
         };
 
 
-        apigClient.seasonSeasonIdRoundRoundIdPickDelete = function (params, body, additionalParams) {
+        apigClient.deletePick = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 
             utils.assertParametersDefined(params, ['seasonId', 'roundId'], ['body']);
@@ -259,43 +291,79 @@ module.exports = {
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdRoundRoundIdPickDeleteRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundRoundIdPickDeleteRequest, authType, additionalParams);
         };
 
 
-        apigClient.seasonSeasonIdTopUsersGet = function (params, body, additionalParams) {
+        apigClient.getTopUsers = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 
             utils.assertParametersDefined(params, ['seasonId', 'numberOfUsers'], ['body']);
 
             var seasonSeasonIdTopUsersGetRequest = {
                 verb: 'get'.toUpperCase(),
-                path: pathComponenent + uritemplate('/season/{seasonId}/topUsers').expand(utils.parseParametersToObject(params, ['seasonId', ])),
+                path: pathComponenent + uritemplate('/season/{seasonId}/topUsers').expand(utils.parseParametersToObject(params, ['seasonId'])),
                 headers: utils.parseParametersToObject(params, []),
                 queryParams: utils.parseParametersToObject(params, ['numberOfUsers']),
                 body: body
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdTopUsersGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdTopUsersGetRequest, authType, additionalParams);
         };
 
 
-        apigClient.seasonSeasonIdUserGet = function (params, body, additionalParams) {
+        apigClient.getCurrentUser = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 
-            utils.assertParametersDefined(params, ['seasonId', 'ids', 'id'], ['body']);
+            utils.assertParametersDefined(params, ['seasonId'], ['body']);
 
             var seasonSeasonIdUserGetRequest = {
                 verb: 'get'.toUpperCase(),
-                path: pathComponenent + uritemplate('/season/{seasonId}/user').expand(utils.parseParametersToObject(params, ['seasonId', ])),
+                path: pathComponenent + uritemplate('/season/{seasonId}/user').expand(utils.parseParametersToObject(params, ['seasonId'])),
                 headers: utils.parseParametersToObject(params, []),
-                queryParams: utils.parseParametersToObject(params, ['ids', 'id']),
+                queryParams: utils.parseParametersToObject(params, []),
                 body: body
             };
 
 
-            return apiGatewayClient.makeRequest(seasonSeasonIdUserGetRequest, authType, additionalParams, config.apiKey);
+            return apiGatewayClient.makeRequest(seasonSeasonIdUserGetRequest, authType, additionalParams);
+        };
+
+
+        apigClient.getUserById = function (params, body, additionalParams) {
+            if(additionalParams === undefined) { additionalParams = {}; }
+
+            utils.assertParametersDefined(params, ['seasonId', 'id'], ['body']);
+
+            var seasonSeasonIdUserGetRequest = {
+                verb: 'get'.toUpperCase(),
+                path: pathComponenent + uritemplate('/season/{seasonId}/user').expand(utils.parseParametersToObject(params, ['seasonId'])),
+                headers: utils.parseParametersToObject(params, []),
+                queryParams: utils.parseParametersToObject(params, ['id']),
+                body: body
+            };
+
+
+            return apiGatewayClient.makeRequest(seasonSeasonIdUserGetRequest, authType, additionalParams);
+        };
+
+
+        apigClient.getUsersById = function (params, body, additionalParams) {
+            if(additionalParams === undefined) { additionalParams = {}; }
+
+            utils.assertParametersDefined(params, ['seasonId', 'ids'], ['body']);
+
+            var seasonSeasonIdUserGetRequest = {
+                verb: 'get'.toUpperCase(),
+                path: pathComponenent + uritemplate('/season/{seasonId}/user').expand(utils.parseParametersToObject(params, ['seasonId'])),
+                headers: utils.parseParametersToObject(params, []),
+                queryParams: utils.parseParametersToObject(params, ['ids']),
+                body: body
+            };
+
+
+            return apiGatewayClient.makeRequest(seasonSeasonIdUserGetRequest, authType, additionalParams);
         };
 
 
