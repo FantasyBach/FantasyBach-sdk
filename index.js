@@ -259,6 +259,24 @@ module.exports = {
         };
 
 
+        apigClient.postNickname = function (params, body, additionalParams) {
+            if(additionalParams === undefined) { additionalParams = {}; }
+
+            utils.assertParametersDefined(params, [], ['body']);
+
+            var seasonSeasonIdRoundRoundIdPickPostRequest = {
+                verb: 'post'.toUpperCase(),
+                path: pathComponenent + uritemplate('/nickname').expand(utils.parseParametersToObject(params, [])),
+                headers: utils.parseParametersToObject(params, []),
+                queryParams: utils.parseParametersToObject(params, []),
+                body: body
+            };
+
+
+            return apiGatewayClient.makeRequest(seasonSeasonIdRoundRoundIdPickPostRequest, authType, additionalParams);
+        };
+
+
         apigClient.postPick = function (params, body, additionalParams) {
             if(additionalParams === undefined) { additionalParams = {}; }
 

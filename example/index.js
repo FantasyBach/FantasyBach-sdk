@@ -12,6 +12,7 @@ var apigClient = apigClientFactory.newClient();
 apigClient.login({token : fbToken}, {}).then(function(result) {
     console.log('login GET success');
     console.log(result);
+    var userId = result.data.userId;
 
     apigClient = apigClientFactory.newClient({
         accessKey: result.data.accessKey,
@@ -19,11 +20,38 @@ apigClient.login({token : fbToken}, {}).then(function(result) {
         sessionToken: result.data.sessionToken
     });
 
-    apigClient.getRoles({ seasonId : seasonId }, {}).then(function(result) {
-        console.log('roles GET success');
+    apigClient.postNickname({}, { nickname : 'MixMasterMitch' }).then(function(result) {
+        console.log('nickname POST success');
         console.log(result);
     }).catch(function(result) {
-        console.log('roles GET failure');
+        console.log('nickname POST failure');
+        console.log(result);
+    });
+
+    apigClient.getUserById({ seasonId : seasonId, id : userId }, {}).then(function(result) {
+        console.log('user GET success');
+        console.log(result);
+    }).catch(function(result) {
+        console.log('user GET failure');
+        console.log(result);
+    });
+
+    apigClient.getContestants({ seasonId : seasonId }, {}).then(function(result) {
+        console.log('contestants GET success');
+        console.log(result);
+    }).catch(function(result) {
+        console.log('contestants GET failure');
+        console.log(result);
+    });
+
+    apigClient.deletePick({ seasonId : seasonId, roundId : 'bfcf0ace-90ed-11e5-8994-feff819cdc9f' }, {
+        roleId : '5773fd3c-90d8-11e5-8994-feff819cdc9f',
+        contestantId : '3b74275c-caad-4a94-9e1e-26cdea0ac050'
+    }).then(function(result) {
+        console.log('pick DELETE success');
+        console.log(result);
+    }).catch(function(result) {
+        console.log('pick DELETE failure');
         console.log(result);
     });
     
