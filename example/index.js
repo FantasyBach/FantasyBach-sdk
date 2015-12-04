@@ -1,4 +1,4 @@
-var apigClientFactory = require('fantasybach-sdk');
+var FantasyBachSdk = require('fantasybach-sdk').FantasyBachSdk;
 
 /*
  * This expires frequently.
@@ -8,17 +8,11 @@ var fbToken = 'CAAEXlZB7tJc4BAOqebfBOTT0Qa0f5NapzchbGCF1Tg3TrkwVi796p9S0yZASyu47
 
 var seasonId = '100905a6-90d7-11e5-8994-feff819cdc9f';
 
-var apigClient = apigClientFactory.newClient();
-apigClient.login({token : fbToken}, {}).then(function(result) {
+var apigClient = new FantasyBachSdk();
+apigClient.login({token : fbToken}).then(function(result) {
     console.log('login GET success');
     console.log(result);
     var userId = result.data.userId;
-
-    apigClient = apigClientFactory.newClient({
-        accessKey: result.data.accessKey,
-        secretKey: result.data.secretKey,
-        sessionToken: result.data.sessionToken
-    });
 
     apigClient.postNickname({}, { nickname : 'MixMasterMitch' }).then(function(result) {
         console.log('nickname POST success');
