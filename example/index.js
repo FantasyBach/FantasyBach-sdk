@@ -22,7 +22,7 @@ apigClient.login({token : fbToken}).then(function(result) {
         console.log(result);
     });
 
-    apigClient.getUserById({ seasonId : seasonId, id : userId }, {}).then(function(result) {
+    apigClient.getCurrentUser({ seasonId : seasonId }, {}).then(function(result) {
         console.log('user GET success');
         console.log(result);
     }).catch(function(result) {
@@ -38,14 +38,25 @@ apigClient.login({token : fbToken}).then(function(result) {
         console.log(result);
     });
 
-    apigClient.deletePick({ seasonId : seasonId, roundId : 'bfcf0ace-90ed-11e5-8994-feff819cdc9f' }, {
+    apigClient.postPick({ seasonId : seasonId, roundId : 'bfcf0ace-90ed-11e5-8994-feff819cdc9f' }, {
         roleId : '5773fd3c-90d8-11e5-8994-feff819cdc9f',
         contestantId : '3b74275c-caad-4a94-9e1e-26cdea0ac050'
     }).then(function(result) {
-        console.log('pick DELETE success');
+        console.log('pick POST success');
         console.log(result);
+
+        apigClient.deletePick({ seasonId : seasonId, roundId : 'bfcf0ace-90ed-11e5-8994-feff819cdc9f' }, {
+            roleId : '5773fd3c-90d8-11e5-8994-feff819cdc9f',
+            contestantId : '3b74275c-caad-4a94-9e1e-26cdea0ac050'
+        }).then(function(result) {
+            console.log('pick DELETE success');
+            console.log(result);
+        }).catch(function(result) {
+            console.log('pick DELETE failure');
+            console.log(result);
+        });
     }).catch(function(result) {
-        console.log('pick DELETE failure');
+        console.log('pick POST failure');
         console.log(result);
     });
     
