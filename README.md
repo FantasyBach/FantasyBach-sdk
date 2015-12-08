@@ -29,4 +29,3 @@ static ./example
 
 You will also have to change the facebook token in `index.js`. Assuming you have permissions, a valid token can be generated at: https://developers.facebook.com/tools/explorer/307416292730318
 
-NOTE: the /login endpoint does not get facebook data yet, so hardcoded values for Mitchell Loeppky are in place.
