@@ -234,5 +234,29 @@ FantasyBachSdk.prototype = {
             queryParams: utils.parseParametersToObject(params, ['ids']),
             body: body
         });
+    },
+
+    postAction : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/action').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
+    postRose : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/rose').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
     }
 };

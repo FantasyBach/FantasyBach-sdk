@@ -30,11 +30,31 @@ apigClient.login({token : fbToken}).then(function(result) {
         console.log(result);
     });
 
+    apigClient.getRoles({ seasonId : seasonId }, {}).then(function(result) {
+        console.log('roles GET success');
+        console.log(result);
+    }).catch(function(result) {
+        console.log('roles GET failure');
+        console.log(result);
+    });
+
     apigClient.getContestants({ seasonId : seasonId }, {}).then(function(result) {
         console.log('contestants GET success');
         console.log(result);
     }).catch(function(result) {
         console.log('contestants GET failure');
+        console.log(result);
+    });
+
+    apigClient.postRose({ seasonId : seasonId }, {
+        contestantId : '3b74275c-caad-4a94-9e1e-26cdea0ac050',
+        roundId : '55baf478-90ec-11e5-8994-feff819cdc9f',
+        countDelta : 1
+    }).then(function(result) {
+        console.log('rose POST success');
+        console.log(result);
+    }).catch(function(result) {
+        console.log('rose POST failure');
         console.log(result);
     });
 
