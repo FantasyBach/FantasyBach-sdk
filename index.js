@@ -258,5 +258,41 @@ FantasyBachSdk.prototype = {
             queryParams: utils.parseParametersToObject(params, []),
             body: body
         });
+    },
+
+    postElimination : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/eliminate').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
+    postPrepareRound : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/prepareRound').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
+    postUpdateScores : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/updateScores').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
     }
 };
