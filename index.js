@@ -195,7 +195,7 @@ FantasyBachSdk.prototype = {
             verb: 'get'.toUpperCase(),
             path: this.pathComponent + uritemplate('/season/{seasonId}/topUsers').expand(utils.parseParametersToObject(params, ['seasonId'])),
             headers: utils.parseParametersToObject(params, []),
-            queryParams: utils.parseParametersToObject(params, ['numberOfUsers']),
+            queryParams: utils.parseParametersToObject(params, []),
             body: body
         });
     },
