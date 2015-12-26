@@ -294,5 +294,53 @@ FantasyBachSdk.prototype = {
             queryParams: utils.parseParametersToObject(params, []),
             body: body
         });
+    },
+
+    postUpdateGroups : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/updateGroups').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
+    getGroupMembers : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId', 'id']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'get'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, ['id']),
+            body: body
+        });
+    },
+
+    postGroup : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
+    deleteGroup : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'delete'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
     }
 };
