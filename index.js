@@ -15,7 +15,7 @@ var FantasyBachSdk = module.exports.FantasyBachSdk = function(config) {
         region : 'us-east-1',
         defaultContentType : 'application/json',
         defaultAcceptType : 'application/json',
-        endpoint : 'https://kku30n0xzl.execute-api.us-east-1.amazonaws.com',
+        endpoint : 'https://api.fantasybach.com',
         stage : 'dev'
     });
 
