@@ -1,7 +1,7 @@
 {
   "name": "fantasybach-sdk",
   "description": "Javscript SDK for accessing the Fantasy Bach API",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Mitchell Loeppky <mitchell@loeppky.com>",
   "homepage": "https://github.com/MixMasterMitch/FantasyBach-sdk",
   "repository": {
