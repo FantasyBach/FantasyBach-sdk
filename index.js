@@ -296,12 +296,12 @@ FantasyBachSdk.prototype = {
         });
     },
 
-    postUpdateGroups : function (params, body) {
+    postUpdatePicks : function (params, body) {
         utils.assertParametersDefined(params, ['seasonId']);
 
         return new SigV4Client(this.config).makeRequest({
             verb: 'post'.toUpperCase(),
-            path: this.pathComponent + uritemplate('/season/{seasonId}/updateGroups').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/updatePicks').expand(utils.parseParametersToObject(params, ['seasonId'])),
             headers: utils.parseParametersToObject(params, []),
             queryParams: utils.parseParametersToObject(params, []),
             body: body
