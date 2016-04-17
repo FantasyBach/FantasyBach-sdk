@@ -4,7 +4,7 @@ var FantasyBachSdk = require('fantasybach-sdk').FantasyBachSdk;
  * This expires frequently.
  * A new one can be generated here: https://developers.facebook.com/tools/explorer/307416292730318
  */
-var fbToken = 'CAAEXlZB7tJc4BAOqebfBOTT0Qa0f5NapzchbGCF1Tg3TrkwVi796p9S0yZASyu47fQbKEROCA2LBbNpmdAaOfUsBEOlCzeValoi0dUU4Kmwza04pN7WIGPC7UwcLLaVJxiQbqbnCV6yAyCQEQXJ9VPdSUF0hBWJbEg8Q4W0QsV0RTJEhDv64UVCBldaVQv2E48ZB2ivt5CiaZCYEwQR7';
+var fbToken = 'CAAEXlZB7tJc4BAI5pKTvBNF8fK5NrVv8LXgG12SFcX19pZCXNceZB4tCMTJRkHnmgnCh9WIUShw2NVOPZCZAy1oROydS0WmjUw9TeOnTXYNUZCo2uOZCh0NZBHkJPWczW6lXXkUa919xZBiIy720OGanAeSgMYAqnx7wTq4x9dZBsMMLSIsLUnEZAM8ZB46X3yhZC5q8xYKqjf7xLEyEYa9ViGME1';
 
 var seasonId = '100905a6-90d7-11e5-8994-feff819cdc9f';
 
@@ -79,7 +79,7 @@ apigClient.login({token : fbToken}).then(function(result) {
         console.log('pick POST failure');
         console.log(result);
     });
-    
+
 }).catch(function(result) {
     console.log('login GET failure');
     console.log(result);
