@@ -79,7 +79,7 @@ apigClient.login({token : fbToken}).then(function(result) {
         console.log('pick POST failure');
         console.log(result);
     });
-    
+
 }).catch(function(result) {
     console.log('login GET failure');
     console.log(result);
