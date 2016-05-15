@@ -3,6 +3,7 @@ var _ = require('lodash');
 var utils = require('./lib/utils');
 var SigV4Client = require('./lib/sigV4Client').SigV4Client;
 var SimpleHttpClient = require('./lib/simpleHttpClient').SimpleHttpClient;
+var getXhrObject = require('./lib/getXhrObject');
 
 var FantasyBachSdk = module.exports.FantasyBachSdk = function(config) {
     if (config === undefined) { config = {}; }
@@ -16,11 +17,14 @@ var FantasyBachSdk = module.exports.FantasyBachSdk = function(config) {
         defaultContentType : 'application/json; charset=UTF-8',
         defaultAcceptType : 'application/json',
         endpoint : 'https://api.fantasybach.com',
+        parentDomain : 'fantasybach.com',
         stage : 'dev'
     });
 
     //Store any path components that were present in the endpoint to append to API calls
     this.pathComponent = '/' + config.stage;
+
+    getXhrObject.init(this.config);
 };
 
 FantasyBachSdk.prototype = {
@@ -37,9 +41,9 @@ FantasyBachSdk.prototype = {
 
         var thiz = this;
         return new SimpleHttpClient(this.config).makeRequest(loginGetRequest).then(function(result) {
-            thiz.config.accessKey = result.data.accessKey;
-            thiz.config.secretKey = result.data.secretKey;
-            thiz.config.sessionToken = result.data.sessionToken;
+            thiz.config.accessKey = result.accessKey;
+            thiz.config.secretKey = result.secretKey;
+            thiz.config.sessionToken = result.sessionToken;
             return result;
         });
     },
