@@ -312,36 +312,24 @@ FantasyBachSdk.prototype = {
         });
     },
 
-    getGroupMembers : function (params, body) {
-        utils.assertParametersDefined(params, ['seasonId', 'id']);
-
-        return new SigV4Client(this.config).makeRequest({
-            verb: 'get'.toUpperCase(),
-            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
-            headers: utils.parseParametersToObject(params, []),
-            queryParams: utils.parseParametersToObject(params, ['id']),
-            body: body
-        });
-    },
-
-    postGroup : function (params, body) {
+    postLeague : function (params, body) {
         utils.assertParametersDefined(params, ['seasonId']);
 
         return new SigV4Client(this.config).makeRequest({
             verb: 'post'.toUpperCase(),
-            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/league').expand(utils.parseParametersToObject(params, ['seasonId'])),
             headers: utils.parseParametersToObject(params, []),
             queryParams: utils.parseParametersToObject(params, []),
             body: body
         });
     },
 
-    deleteGroup : function (params, body) {
-        utils.assertParametersDefined(params, ['seasonId']);
+    postLeagueJoin : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId', 'leagueId']);
 
         return new SigV4Client(this.config).makeRequest({
-            verb: 'delete'.toUpperCase(),
-            path: this.pathComponent + uritemplate('/season/{seasonId}/group').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/league/{leagueId}/join').expand(utils.parseParametersToObject(params, ['seasonId', 'leagueId'])),
             headers: utils.parseParametersToObject(params, []),
             queryParams: utils.parseParametersToObject(params, []),
             body: body
