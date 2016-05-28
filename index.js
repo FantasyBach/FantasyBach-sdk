@@ -288,6 +288,18 @@ FantasyBachSdk.prototype = {
         });
     },
 
+    postOptimalLineup : function (params, body) {
+        utils.assertParametersDefined(params, ['seasonId']);
+
+        return new SigV4Client(this.config).makeRequest({
+            verb: 'post'.toUpperCase(),
+            path: this.pathComponent + uritemplate('/season/{seasonId}/admin/optimalLineup').expand(utils.parseParametersToObject(params, ['seasonId'])),
+            headers: utils.parseParametersToObject(params, []),
+            queryParams: utils.parseParametersToObject(params, []),
+            body: body
+        });
+    },
+
     // postUpdateScores : function (params, body) {
     //     utils.assertParametersDefined(params, ['seasonId']);
     //
